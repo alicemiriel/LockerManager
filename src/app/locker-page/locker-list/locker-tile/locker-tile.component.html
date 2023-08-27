@@ -1,0 +1,12 @@
+<div class="tile card m-2" [ngClass]="{
+  free: LockerStatus.FREE === locker?.status,
+  busy: LockerStatus.BUSY === locker?.status,
+  reserved: LockerStatus.RESERVED === locker?.status,
+}">
+  <div class="card-header text-center">
+    {{locker?.number | lockerNumber}}
+  </div>
+  <div class="card-body text-center">
+    {{locker?.status | lockerStatus}}
+  </div>
+</div>
