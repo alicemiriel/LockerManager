@@ -1,1 +1,6 @@
-<button type="button" class="btn btn-primary" (click)="onReserve.emit()">Reserve Locker</button>
+<button type="button"
+        class="btn btn-primary"
+        [disabled]="disabled"
+        (click)="onReserve.emit()"
+
+>Reserve Locker</button>

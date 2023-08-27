@@ -1,3 +1,4 @@
 <div class="d-flex flex overflow-auto my-4">
-    <app-locker-tile *ngFor="let locker of lockers" [locker]="locker"/>
+  <div *ngFor="let locker of lockers">{{locker.number}}</div>
+<!--    <app-locker-tile *ngFor="let locker of lockers" [locker]="locker"/>-->
 </div>

@@ -1,4 +1,4 @@
 <div class="p-5 position-relative">
-  <app-reserve-button (onReserve)="onReserve()"/>
-  <app-locker-list [lockers]="lockers | async"/>
+  <app-reserve-button [disabled]="!reservedLocker" (onReserve)="onReserve()"/>
+  <app-locker-list [lockers]="lockers"/>
 </div>

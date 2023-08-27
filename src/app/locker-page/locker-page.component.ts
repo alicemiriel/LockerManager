@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Locker, LockerStatus } from '../locker.type';
-import { map, Observable } from 'rxjs';
+import { map } from 'rxjs';
 import { LockerService } from '../locker.service';
 
 @Component({
@@ -9,22 +9,37 @@ import { LockerService } from '../locker.service';
   styleUrls: ['./locker-page.component.less'],
 })
 export class LockerPageComponent implements OnInit {
-  lockers!: Observable<Locker[]>;
+  lockers: Locker[] | undefined;
+  reservedLocker: Locker | undefined;
 
   constructor(private lockerService: LockerService) {}
 
   ngOnInit(): void {
-    this.lockers = this.lockerService
-      .getLockers()
-      .pipe(map((lockers) => this.markNextReserved(lockers)));
+    this.getLockers();
   }
 
   onReserve(): void {
-    // this.lockers.subscribe(lockers)
-    // if (this.hero) {
-    //   this.heroService.updateHero(this.hero)
-    //     .subscribe(() => this.goBack());
-    // }
+    if (this.reservedLocker) {
+      this.lockers = [];
+      this.lockerService
+        .updateLocker({
+          ...this.reservedLocker,
+          status: LockerStatus.BUSY,
+        })
+        .subscribe(() => this.getLockers());
+    }
+  }
+
+  private getLockers() {
+    this.lockerService
+      .getLockers()
+      .pipe(map((lockers) => this.markNextReserved(lockers)))
+      .subscribe((lockers) => {
+        this.lockers = lockers;
+        this.reservedLocker = lockers.find(
+          (locker) => locker.status === LockerStatus.RESERVED,
+        );
+      });
   }
 
   private markNextReserved(lockers: Locker[]) {

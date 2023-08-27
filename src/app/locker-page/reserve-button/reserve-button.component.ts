@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-reserve-button',
@@ -6,5 +6,6 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./reserve-button.component.less'],
 })
 export class ReserveButtonComponent {
+  @Input() disabled: boolean = false;
   @Output() onReserve = new EventEmitter();
 }
