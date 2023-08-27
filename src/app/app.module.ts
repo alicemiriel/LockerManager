@@ -32,7 +32,9 @@ import { LockerStatusPipe } from './locker-page/locker-list/locker-tile/locker-s
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(LockersInMemoryDataService),
+    HttpClientInMemoryWebApiModule.forRoot(LockersInMemoryDataService, {
+      delay: 100,
+    }),
   ],
   providers: [
     {

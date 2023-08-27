@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Locker, LockerStatus } from '../locker.type';
-import { map } from 'rxjs';
 import { LockerService } from '../locker.service';
 
 @Component({
@@ -20,7 +19,6 @@ export class LockerPageComponent implements OnInit {
 
   onReserve(): void {
     if (this.reservedLocker) {
-      this.lockers = [];
       this.lockerService
         .updateLocker({
           ...this.reservedLocker,
@@ -31,15 +29,12 @@ export class LockerPageComponent implements OnInit {
   }
 
   private getLockers() {
-    this.lockerService
-      .getLockers()
-      .pipe(map((lockers) => this.markNextReserved(lockers)))
-      .subscribe((lockers) => {
-        this.lockers = lockers;
-        this.reservedLocker = lockers.find(
-          (locker) => locker.status === LockerStatus.RESERVED,
-        );
-      });
+    this.lockerService.getLockers().subscribe((lockers) => {
+      this.lockers = this.markNextReserved(lockers);
+      this.reservedLocker = this.lockers.find(
+        (locker) => locker.status === LockerStatus.RESERVED,
+      );
+    });
   }
 
   private markNextReserved(lockers: Locker[]) {
