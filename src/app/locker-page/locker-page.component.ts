@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Locker, LockerStatus } from '../locker.type';
 import { LockerService } from '../locker.service';
+import { LockerReservationService } from '../locker-reservation.service';
 
 @Component({
   selector: 'app-locker-page',
@@ -11,7 +12,10 @@ export class LockerPageComponent implements OnInit {
   lockers: Locker[] | undefined;
   reservedLocker: Locker | undefined;
 
-  constructor(private lockerService: LockerService) {}
+  constructor(
+    private lockerService: LockerService,
+    private lockerReservationService: LockerReservationService,
+  ) {}
 
   ngOnInit(): void {
     this.getLockers();
@@ -30,31 +34,10 @@ export class LockerPageComponent implements OnInit {
 
   private getLockers() {
     this.lockerService.getLockers().subscribe((lockers) => {
-      this.lockers = this.markNextReserved(lockers);
+      this.lockers = this.lockerReservationService.markReserved(lockers);
       this.reservedLocker = this.lockers.find(
         (locker) => locker.status === LockerStatus.RESERVED,
       );
     });
-  }
-
-  private markNextReserved(lockers: Locker[]) {
-    let reservedLockerIndex = -1;
-    for (let lockerIndex = 0; lockerIndex < lockers.length; lockerIndex += 2) {
-      if (lockers[lockerIndex].status === LockerStatus.FREE) {
-        reservedLockerIndex = lockerIndex;
-        break;
-      }
-    }
-    if (reservedLockerIndex === -1) {
-      reservedLockerIndex = lockers.findIndex(
-        (locker) => locker.status === LockerStatus.FREE,
-      );
-    }
-    // lockers.
-    return lockers.map((locker, index) => ({
-      ...locker,
-      status:
-        index === reservedLockerIndex ? LockerStatus.RESERVED : locker.status,
-    }));
   }
 }

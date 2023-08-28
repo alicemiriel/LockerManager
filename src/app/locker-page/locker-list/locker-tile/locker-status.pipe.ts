@@ -16,6 +16,8 @@ export class LockerStatusPipe implements PipeTransform {
         return 'Current Reserved Locker';
       case LockerStatus.FREE:
         return 'Free';
+      default:
+        return '';
     }
   }
 }
