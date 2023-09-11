@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Locker } from './locker.type';
 import { HttpClient } from '@angular/common/http';
 

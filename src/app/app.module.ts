@@ -13,8 +13,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoadingInterceptor } from './shared/loading/loading.interceptor';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { LockersInMemoryDataService } from './lockers-in-memory-data.service';
-import { LockerNumberPipe } from './locker-page/locker-list/locker-tile/locker-number.pipe';
-import { LockerStatusPipe } from './locker-page/locker-list/locker-tile/locker-status.pipe';
+import { LockerNumberPipe } from './locker-page/locker-list/locker-tile/locker-number/locker-number.pipe';
+import { LockerStatusPipe } from './locker-page/locker-list/locker-tile/locker-status/locker-status.pipe';
 
 @NgModule({
   declarations: [

@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LockerPageComponent } from './locker-page.component';
-import { MockComponent, MockProvider, MockService } from 'ng-mocks';
+import { MockComponent, MockProvider } from 'ng-mocks';
 import { LockerService } from '../locker.service';
 import { ReserveButtonComponent } from './reserve-button/reserve-button.component';
 import { LockerListComponent } from './locker-list/locker-list.component';
 import { EMPTY, of } from 'rxjs';
 import { Locker, LockerStatus } from '../locker.type';
 import { By } from '@angular/platform-browser';
+import { LockerReservationService } from '../locker-reservation.service';
 import Spy = jasmine.Spy;
 import Func = jasmine.Func;
-import { LockerReservationService } from '../locker-reservation.service';
 
 describe('LockerPageComponent', () => {
   let component: LockerPageComponent;

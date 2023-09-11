@@ -3,8 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { LockerTileComponent } from './locker-tile.component';
 import { LockerStatus } from '../../../locker.type';
 import { By } from '@angular/platform-browser';
-import { LockerNumberPipe } from './locker-number.pipe';
-import { LockerStatusPipe } from './locker-status.pipe';
+import { LockerNumberPipe } from './locker-number/locker-number.pipe';
+import { LockerStatusPipe } from './locker-status/locker-status.pipe';
 
 describe('LockerTileComponent', () => {
   let component: LockerTileComponent;

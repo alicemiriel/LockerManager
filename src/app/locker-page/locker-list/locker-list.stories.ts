@@ -3,8 +3,8 @@ import { moduleMetadata, StoryObj } from '@storybook/angular';
 import { LockerListComponent } from './locker-list.component';
 import { LockerStatus } from '../../locker.type';
 import { LockerTileComponent } from './locker-tile/locker-tile.component';
-import { LockerNumberPipe } from './locker-tile/locker-number.pipe';
-import { LockerStatusPipe } from './locker-tile/locker-status.pipe';
+import { LockerNumberPipe } from './locker-tile/locker-number/locker-number.pipe';
+import { LockerStatusPipe } from './locker-tile/locker-status/locker-status.pipe';
 
 interface StoryProps {
   lockers: { number: number; status: LockerStatus }[];

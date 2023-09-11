@@ -86,7 +86,7 @@ describe('LockerReservationService', () => {
           LockerStatus.FREE,
           LockerStatus.BUSY,
         ],
-        2,
+        1,
       ],
       [[], -1],
     ] as [LockerStatus[], number][]

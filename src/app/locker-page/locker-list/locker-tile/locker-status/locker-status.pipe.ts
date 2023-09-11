@@ -1,11 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { LockerStatus } from '../../../locker.type';
+import { LockerStatus } from '../../../../locker.type';
 
 @Pipe({
   name: 'lockerStatus',
 })
 export class LockerStatusPipe implements PipeTransform {
-  transform(value: LockerStatus | undefined): unknown {
+  transform(value: LockerStatus | undefined): string {
     if (!value) {
       return '';
     }

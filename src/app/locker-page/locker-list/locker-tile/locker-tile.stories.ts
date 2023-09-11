@@ -2,8 +2,8 @@ import type { Meta } from '@storybook/angular';
 import { moduleMetadata, StoryObj } from '@storybook/angular';
 import { LockerTileComponent } from './locker-tile.component';
 import { LockerStatus } from '../../../locker.type';
-import { LockerNumberPipe } from './locker-number.pipe';
-import { LockerStatusPipe } from './locker-status.pipe';
+import { LockerNumberPipe } from './locker-number/locker-number.pipe';
+import { LockerStatusPipe } from './locker-status/locker-status.pipe';
 
 const meta: Meta<{ number: number; status: LockerStatus }> = {
   title: 'Locker Tile',
